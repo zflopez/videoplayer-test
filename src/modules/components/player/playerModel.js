@@ -1,7 +1,6 @@
 module.exports = Backbone.Model.extend({
 
 	initialize: function () {
-		console.log('modelo del player');
 		this.checkBrowser();
 	},
 
@@ -11,6 +10,5 @@ module.exports = Backbone.Model.extend({
 	checkBrowser: function () {
 		var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 		this.set('isSafari', isSafari);
-		console.log('isSafari', isSafari);
 	}
 });

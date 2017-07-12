@@ -1,5 +1,5 @@
 var dashjs = require('dashjs');
-var template = require('./playerTemplate.html');
+//var template = require('./playerTemplate.html');
 
 module.exports = Backbone.View.extend({
 
