@@ -1,6 +1,6 @@
-<script type="text/template" id="playerTemplate">
-    <video id="videoPlayer" controls <% if(isSafari){ %>src="<%= videoUrl %>"<% } %></video>
-    <% if(!isSafari){ %>
-        <div id="videoSubs" style="direction: <%= $data.direction %>"></div>
+<script type="text/template" id="playerTemplate" data-variable-name="player">
+    <video id="videoPlayer" controls <% if(player.isSafari){ %>src="<%= player.videoUrl %>"<% } %></video>
+    <% if(!player.isSafari){ %>
+         <div id="videoSubs" style=""></div> 
     <% } %>
 </script>

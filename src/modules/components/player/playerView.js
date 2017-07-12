@@ -1,5 +1,5 @@
 var dashjs = require('dashjs');
-//var template = require('./playerTemplate.html');
+var template = require('./playerTemplate.html');
 
 module.exports = Backbone.View.extend({
 
@@ -8,10 +8,9 @@ module.exports = Backbone.View.extend({
 	id: 'playerContainer',
 
 	initialize: function (options) {
-		console.log('vista del player');
 		this.options = options || {};
-		this.listenTo(this.model, 'change:isSafari', this.render);
-		//this.render();
+		_.bindAll(this, 'render');
+		this.render();
 	},
 
 	render: function () {
@@ -23,7 +22,8 @@ module.exports = Backbone.View.extend({
 	/**
 	 * Checks browser to load DashJS or HLS native player.
 	 */
-	loadPlayer: function(isSafari) {
+	loadPlayer: function (isSafari) {
+		console.log('loadplayermethod');
 		if (isSafari === true) {
 			return this.model.set('videoUrl', this.options.config.hls_video_url);
 		}
@@ -33,7 +33,8 @@ module.exports = Backbone.View.extend({
 	/**
 	 * Load DashJS player.
 	 */
-	loadDashPlayer: function(video_url) {
+	loadDashPlayer: function (video_url) {
+		console.log('loaddashplayer');
 		this.player = dashjs.MediaPlayer.create();
 		this.player.initialize(this.$('#videoPlayer'), video_url, true);
 		this.player.attachTTMLRenderingDiv(this.$('#videoSubs'));

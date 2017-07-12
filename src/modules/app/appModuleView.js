@@ -45,17 +45,20 @@ module.exports = Backbone.View.extend({
 	},
 
 	/**
-	 * 
+	 * Creates play button component instance and appends it to appModule.
 	 */
 	loadPlayButton: function() {
 		this.playButton = new playButtonComponent(eventBus);
 		this.$el.append(this.playButton.el);
 	},
 
+	/**
+	 * Creates player component instance and appends it to appModule.
+	 */
 	loadPlayer: function () {
-		console.log('playeeuehrueh');
-		this.player = new playerComponent(this.options.settings.video_url);
-		//this.$el.append(this.player);
+		this.player = new playerComponent(eventBus, this.options.settings.video_url);
+		console.log(this.player.el);
+		this.$el.append(this.player.el);
 	},
 
 	loadLanguageSelector: function() {

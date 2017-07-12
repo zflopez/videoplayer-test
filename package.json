@@ -36,5 +36,13 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.1.0",
     "webpack-compile-templates": "^0.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zflopez/videoplayer-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zflopez/videoplayer-test/issues"
+  },
+  "homepage": "https://github.com/zflopez/videoplayer-test#readme"
 }
