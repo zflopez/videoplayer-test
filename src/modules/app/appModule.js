@@ -1,9 +1,11 @@
-var appModuleView = require('./../app/appModuleView');
-var appModuleModel = require('./../app/appModuleModel');
+require('backbone');
+var appModuleView = require('./../app/appModuleView.js');
+var appModuleModel = require('./../app/appModuleModel.js');
 
-module.exports = function(config) {
+module.exports = function(settings, url_config) {
     return new appModuleView({
-        model: appModuleModel(),
-        config: config
+        model: appModuleModel,
+        settings: settings,
+        url_config: url_config
     })
 }
