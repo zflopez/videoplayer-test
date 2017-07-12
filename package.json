@@ -1,21 +1,25 @@
 {
   "name": "videoplayer-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Video Player Test",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --progress --colors --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "server": "webpack-dev-server --lazy",
+    "launch": "./launcher.sh"
   },
   "keywords": [],
   "author": "zFlopez",
   "license": "ISC",
   "dependencies": {
     "backbone": "^1.3.3",
+    "backbone.radio": "^2.0.0",
     "bootstrap": "^3.3.7",
     "dashjs": "^2.5.0",
     "easy-pie-chart": "^2.1.7",
+    "fetch-polyfill": "^0.8.2",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
     "moment-duration-format": "^1.3.0",
@@ -31,6 +35,15 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
     "webpack": "^3.1.0",
-    "webpack-compile-templates": "^0.2.1"
-  }
+    "webpack-compile-templates": "^0.2.1",
+    "webpack-dev-server": "^2.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zflopez/videoplayer-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zflopez/videoplayer-test/issues"
+  },
+  "homepage": "https://github.com/zflopez/videoplayer-test#readme"
 }
