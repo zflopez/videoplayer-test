@@ -1,12 +1,14 @@
 {
   "name": "videoplayer-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Video Player Test",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --progress --colors --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "server": "webpack-dev-server --lazy",
+    "launch": "./launcher.sh"
   },
   "keywords": [],
   "author": "zFlopez",
@@ -35,7 +37,8 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
     "webpack": "^3.1.0",
-    "webpack-compile-templates": "^0.2.1"
+    "webpack-compile-templates": "^0.2.1",
+    "webpack-dev-server": "^2.5.1"
   },
   "repository": {
     "type": "git",
