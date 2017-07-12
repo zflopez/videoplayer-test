@@ -1,14 +1,18 @@
-var _ = require('underscore');
+//var _ = require('underscore');
 
 module.exports = Backbone.View.extend({
-
+    
     events: {
         'click': 'playTrigger'
     },
 
     id: 'playButton',
 
-    template: _.template('<button>PLAY</button>'),
+    tagName: 'button',
+
+    className: 'btn btn-default',
+
+    template: _.template('<span class="glyphicon glyphicon-play" aria-hidden="true"></span> <%= label %>'),
 
     initialize: function (options) {
         this.options = options || {};
@@ -17,11 +21,13 @@ module.exports = Backbone.View.extend({
     },
 
     render: function () {
-        console.log('render botón', this.template);
-        this.$el.html(this.template);
+        this.$el.html(this.template(this.model.toJSON()));
         return this;
     },
 
+    /**
+     * Triggers an event for appModule to load player.
+     */
     playTrigger: function () {
         this.options.eventBus.trigger('playVideo');
     }

@@ -7,7 +7,7 @@ var appModule = require('./modules/app/appModule.js');
 
 var init = function () {
     var app = new appModule(settings, url_config);
-    $('body').append(app);
+    $('body').append(app.el);
 }
 
 init();

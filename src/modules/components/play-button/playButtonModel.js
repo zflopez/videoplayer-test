@@ -1,5 +1,5 @@
 module.exports = Backbone.Model.extend({
-    initialize: function() {
-        console.log('playButtonModel');
+    initialize: function () {
+        this.set('label', 'Play');
     }
 });
