@@ -4,7 +4,7 @@ var appModuleModel = require('./../app/appModuleModel.js');
 
 module.exports = function(settings, url_config) {
     return new appModuleView({
-        model: appModuleModel,
+        model: new appModuleModel(),
         settings: settings,
         url_config: url_config
     })

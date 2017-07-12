@@ -9,14 +9,17 @@ var playerComponent = require('./../components/player/playerComponent.js');
 
 module.exports = Backbone.View.extend({
 
+	tagName: 'app',
+
 	initialize: function (options) {
 		this.options = options || {};
-		console.log('holi qué tal appmodule');
+		console.log('holi qué tal appmodule', this.options);
 		this.loadPlayButton();
 	},
 
 	render: function () {
 		this.$el.html(this(this.toJSON()));
+		this.loadComponents();
 		return this;
 	},
 
@@ -24,8 +27,14 @@ module.exports = Backbone.View.extend({
 		this.listenTo(eventBus, 'playVideo', this.loadPlayer);
 	},
 
+	loadComponents: function() {
+		this.loadMovieInfo();
+		this.loadPlayButton();
+		this.loadLanguageSelector();
+	},
+
 	loadMovieInfo: function() {
-		this.movieInfo = new movieInfoComponent(this.options.settings.movie_id);
+		this.movieInfo = new movieInfoComponent(this.options.settings.movie_info);
 		this.$el.append(this.movieInfo);
 	},
 
@@ -36,8 +45,8 @@ module.exports = Backbone.View.extend({
 
 	loadPlayer: function () {
 		console.log('playeeuehrueh');
-		this.player = new playerComponent(this.options.settings);
-		//this.$el.append(this.player);
+		this.player = new playerComponent(this.options.settings.video_url);
+		this.$el.append(this.player);
 	},
 
 	loadLanguageSelector: function() {
