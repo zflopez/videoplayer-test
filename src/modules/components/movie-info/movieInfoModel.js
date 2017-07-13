@@ -1,12 +1,19 @@
+var getMovieInfo = require('./../../../services/movie-data-url.js');
+
 module.exports = Backbone.Model.extend({
-    initialize: function() {
+    initialize: function () {
         console.log('movieInfoModel');
         this.setLabels();
+        this.selectedLangLabels();
+        this.getMovieInfo();
     },
 
-    setLabels: function() {
+    /**
+     * Set labels.
+     */
+    setLabels: function () {
         this.set({
-            languages: {
+            labels: {
                 en: {
                     genres: 'Genres',
                     imdb: 'IMDb',
@@ -29,6 +36,22 @@ module.exports = Backbone.Model.extend({
                     rate: 'النتيجة المستخدم'
                 }
             }
-        });
+        }, { silent: true });
+    },
+
+    /**
+     * Picks selected language labels for template.
+     */
+    selectedLangLabels: function () {
+        var selectedLangLabels = this.get('labels')[this.get('lang')];
+        this.set('langLabels', selectedLangLabels, { silent: true });
+    },
+
+    /**
+     * Returns JSON from fetch request and sets it to the model.
+     */
+    getMovieInfo: function () {
+        this.set(getMovieInfo(this.get('movie_id'), this.get('lang')));
     }
+
 });
