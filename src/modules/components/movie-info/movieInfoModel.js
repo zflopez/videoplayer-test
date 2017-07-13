@@ -1,4 +1,4 @@
-var getMovieInfo = require('./../../../services/movie-data-url.js');
+var getMovieInfo = require('./../../../services/request-url.js');
 
 module.exports = Backbone.Model.extend({
     initialize: function () {
@@ -51,7 +51,7 @@ module.exports = Backbone.Model.extend({
      * Returns JSON from fetch request and sets it to the model.
      */
     getMovieInfo: function () {
-        this.set(getMovieInfo(this.get('movie_id'), this.get('lang')));
+        this.set(getMovieInfo(this.get('movie_info').movie_id, this.get('lang')));
     }
 
 });

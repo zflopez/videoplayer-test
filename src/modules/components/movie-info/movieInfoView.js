@@ -29,7 +29,7 @@ module.exports = Backbone.View.extend({
      * Sets labels for template from fetch request and renders component.
      */
     setFetchLabels: function () {
-        var imdbRoot = '';
+        var imdbRoot = this.model.get('movie_info').imdb_url;
         this.model.set({
             imdbLink: imdbRoot + this.model.get('imdb_id'),
             year: moment(this.model.get('release_date')).year(),
