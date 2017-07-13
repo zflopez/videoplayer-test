@@ -1,11 +1,9 @@
-//require('./propiahojadeestilos');
 require('backbone.radio');
 var eventBus = Backbone.Radio.channel('appModuleChannel');
 var languageSelectorComponent = require('./../components/language-selector/languageSelectorComponent.js');
 var movieInfoComponent = require('./../components/movie-info/movieInfoComponent.js');
 var playButtonComponent = require('./../components/play-button/playButtonComponent.js');
 var playerComponent = require('./../components/player/playerComponent.js');
-// incluir aquí el selector?
 
 module.exports = Backbone.View.extend({
 
@@ -14,7 +12,6 @@ module.exports = Backbone.View.extend({
 	initialize: function (options) {
 		this.options = options || {};
 		_.bindAll(this, 'render');
-		console.log('holi qué tal appmodule', this.options);
 		this.bindEvents();
 		this.render();
 		//this.listenTo(eventBus, 'movieInfo:infoLoaded', this.render);
@@ -31,17 +28,18 @@ module.exports = Backbone.View.extend({
 	 */
 	bindEvents: function () {
 		this.listenTo(eventBus, 'playVideo', this.loadPlayer);
+		this.listenTo(eventBus, 'languageSelector:change', this.refreshLanguage);
 	},
 
 	loadComponents: function() {
 		//this.loadMovieInfo();
 		this.loadPlayButton();
-		//this.loadLanguageSelector();
+		this.loadLanguageSelector();
 	},
 
 	loadMovieInfo: function() {
-		this.movieInfo = new movieInfoComponent(this.options.settings.movie_info);
-		this.$el.append(this.movieInfo);
+		this.movieInfo = new movieInfoComponent(this.options.settings.movie_info, lang);
+		this.$el.append(this.movieInfo.el);
 	},
 
 	/**
@@ -61,8 +59,17 @@ module.exports = Backbone.View.extend({
 		this.$el.append(this.player.el);
 	},
 
+	/**
+	 * Creates language selector component instance and appends ir to appModule.
+	 */
 	loadLanguageSelector: function() {
-		this.languageSelector = new languageSelectorComponent();
-		this.$el.append(this.languageSelector);
+		this.languageSelector = new languageSelectorComponent(eventBus);
+		this.$el.append(this.languageSelector.el);
+	},
+
+	refreshLanguage: function(languageData) {
+		document.dir = languageData.direction;
+		this.movieInfo.remove();
+
 	}
 });
