@@ -1,21 +1,15 @@
 module.exports = Backbone.Model.extend({
-    
-    defaults: {
 
-    },
-    
-    initialize: function() {
-        console.log('languageSelectorModel');
+    initialize: function () {
         this.setLanguages();
     },
-
-    setLanguages: function() {
+    
+    setLanguages: function () {
         this.set({
             languages: [{
                 code: 'en',
                 name: 'English',
-                direction: 'ltr',
-                default: true
+                direction: 'ltr'
             },
             {
                 code: 'es',
@@ -24,8 +18,8 @@ module.exports = Backbone.Model.extend({
             },
             {
                 code: 'ar',
-                name: 'arabic',
-                direction:'rtl'
+                name: 'Arabic',
+                direction: 'rtl'
             }]
         });
     }

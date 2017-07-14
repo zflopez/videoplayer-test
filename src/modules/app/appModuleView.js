@@ -1,11 +1,9 @@
-//require('./propiahojadeestilos');
 require('backbone.radio');
 var eventBus = Backbone.Radio.channel('appModuleChannel');
 var languageSelectorComponent = require('./../components/language-selector/languageSelectorComponent.js');
 var movieInfoComponent = require('./../components/movie-info/movieInfoComponent.js');
 var playButtonComponent = require('./../components/play-button/playButtonComponent.js');
 var playerComponent = require('./../components/player/playerComponent.js');
-// incluir aquí el selector?
 
 module.exports = Backbone.View.extend({
 
@@ -30,19 +28,24 @@ module.exports = Backbone.View.extend({
 	 */
 	bindEvents: function () {
 		this.listenTo(eventBus, 'playVideo', this.loadPlayer);
+		this.listenTo(eventBus, 'languageSelector:change', this.refreshLanguage);
 	},
 
 	loadComponents: function() {
 		this.loadMovieInfo();
 		this.loadPlayButton();
-		//this.loadLanguageSelector();
+		this.loadLanguageSelector();
 	},
 
 	/**
 	 * Creates movie info container component instance and appends it to appModule.
 	 */
 	loadMovieInfo: function() {
+<<<<<<< HEAD
 		this.movieInfo = new movieInfoComponent(eventBus, this.options.settings.movie_info);
+=======
+		this.movieInfo = new movieInfoComponent(this.options.settings.movie_info, lang);
+>>>>>>> feature-language-selector
 		this.$el.append(this.movieInfo.el);
 	},
 
@@ -63,8 +66,17 @@ module.exports = Backbone.View.extend({
 		this.$el.append(this.player.el);
 	},
 
+	/**
+	 * Creates language selector component instance and appends ir to appModule.
+	 */
 	loadLanguageSelector: function() {
-		this.languageSelector = new languageSelectorComponent();
-		this.$el.append(this.languageSelector);
+		this.languageSelector = new languageSelectorComponent(eventBus);
+		this.$el.append(this.languageSelector.el);
+	},
+
+	refreshLanguage: function(languageData) {
+		document.dir = languageData.direction;
+		this.movieInfo.remove();
+
 	}
 });
