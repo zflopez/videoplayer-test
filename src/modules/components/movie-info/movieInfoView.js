@@ -1,4 +1,3 @@
-//require('./movieStyle.scss'); #movieInfoContainer background image url backdrop
 var moment = require('moment'),
     duration = require('moment-duration-format'),
     rateChartComponent = require('./../rate-chart/rateChartComponent.js'),
@@ -10,8 +9,6 @@ module.exports = Backbone.View.extend({
     tagName: 'section',
 
     id: 'movieInfoContainer',
-
-    //class: '',
 
     initialize: function (options) {
         this.options = options || {};

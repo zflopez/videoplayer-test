@@ -6,6 +6,9 @@ module.exports = Backbone.Model.extend({
         this.getImagesConfig();
     },
 
+    /**
+     * Requests configuration url for images.
+     */
     getImagesConfig: function() {
         var scope = this;
 

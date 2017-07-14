@@ -4,7 +4,9 @@
     <% if(info.title !== info.original_title ){ %>
         <h3><i><%= info.original_title %></i></h3>
     <% } %>
-    <p><%= info.langLabels.runtime %> <%= info.runtimeFormatted %></p>
+    <% if(info.runtime){ %>
+        <p><%= info.langLabels.runtime %> <%= info.runtimeFormatted %></p>
+    <% } %>
     <p><a href="<%= info.imdbLink %>"><%= info.langLabels.imdb %></a></p>
     <div id="chartContainer"></div>
     <% if(info.overview){ %>

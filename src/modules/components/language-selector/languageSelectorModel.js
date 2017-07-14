@@ -4,6 +4,9 @@ module.exports = Backbone.Model.extend({
         this.setLanguages();
     },
     
+    /**
+     * Sets languages props.
+     */
     setLanguages: function () {
         this.set({
             languages: [{
