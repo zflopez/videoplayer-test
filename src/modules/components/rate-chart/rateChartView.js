@@ -1,11 +1,10 @@
-//var $ = require('jquery');
 require('easy-pie-chart');
 var template = require('./rateChartTemplate.html');
 
 module.exports = Backbone.View.extend({
 
     id: 'rateChart',
-    
+
     initialize: function () {
         _.bindAll(this, 'render');
         this.render();
@@ -13,15 +12,14 @@ module.exports = Backbone.View.extend({
 
     render: function () {
         this.$el.html(template.chartTemplate(this.model.toJSON()));
-        console.log($('.chart'));
         //this.loadChart();
         return this;
     },
 
     loadChart: function () {
-        this.$('.chart')[0].easyPieChart({
+        this.$('.chart').easyPieChart({
             barColor: "#21d07a",
-            trackColor:	"#204529",
+            trackColor: "#204529",
             scaleColor: false,
             scaleLength: 0,
             lineCap: "round",

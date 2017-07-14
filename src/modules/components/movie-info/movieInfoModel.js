@@ -4,7 +4,7 @@ module.exports = Backbone.Model.extend({
     initialize: function () {
         this.setLabels();
         this.selectedLangLabels();
-        this.getMovieInfo();
+        //this.getMovieInfo();
     },
 
     /**

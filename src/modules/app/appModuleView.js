@@ -30,6 +30,9 @@ module.exports = Backbone.View.extend({
 		this.listenTo(eventBus, 'languageSelector:change', this.refreshLanguage);
 	},
 
+	/**
+	 * Calls every component creation method.
+	 */
 	loadComponents: function () {
 		this.loadMovieInfo();
 		this.loadLanguageSelector();

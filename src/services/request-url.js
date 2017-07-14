@@ -7,7 +7,6 @@ module.exports = function (params, callback) {
             return response.json();
         })
         .then(function (json) {
-            console.log('Fetch JSON', json);
             return callback(json);
         })
         .catch(function (err) {
