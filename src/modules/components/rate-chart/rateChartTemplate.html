@@ -1,17 +1,8 @@
-<div class="outer-ring">
-    <div class="chart" data-percent="82.5" data-scale-color="#ffb400">
-      <div class="percent">
-        <span class="icon"></span>
-      </div>
-      <div class="canvas" height="120" width="120">
-  </div>
-</div>
-
-
-<script id="chartTemplate">
+<script type="text/template" id="chartTemplate" data-variable-name="chart">
     <div class="outer-ring">
-        <div class="chart" data-percent="<%= vote_average %>">
+        <div class="chart" data-percent="<%= chart.vote_average %>">
             <div class="percent"></div>
         </div>
     </div>
+    <span><%= chart.vote_count %> <%= chart.labels.votes %></span>
 </script>

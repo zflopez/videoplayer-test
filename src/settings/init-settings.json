@@ -1,5 +1,10 @@
 {
-    "movie_id": 9761,
-    "dash_video_url": "http://media.axprod.net/dash/ED_TTML_NEW/Clear/Manifest_sub_in.mpd",
-    "hls_video_url": "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
+    "movie_info": {
+        "movie_id": 9761,
+        "imdb_url": "http://www.imdb.com/title/"
+    },
+    "video_url": {
+        "dash_video_url": "http://media.axprod.net/dash/ED_TTML_NEW/Clear/Manifest_sub_in.mpd",
+        "hls_video_url": "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
+    }
 }

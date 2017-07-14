@@ -3,6 +3,6 @@ var rateChartModel = require('./rateChartModel.js');
 
 module.exports = function (config) {
     return new rateChartView({
-        model: new rateChartModel(config),
+        model: new rateChartModel(config)
     });
 };

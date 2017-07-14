@@ -1,15 +1,13 @@
 require('./styles/styles.scss');
+require('es6-promise').polyfill();
 
-var root = document.querySelector('#root')
-root.innerHTML = "<p>Hello webpack.</p>"
+var settings = require('./settings/init-settings.json');
+var url_config = require('./services/build-url.js');
+var appModule = require('./modules/app/appModule.js');
 
+var init = function () {
+    var app = new appModule(settings, url_config);
+    $('body').append(app.el);
+}
 
-var codeURL = require('./code.png');
-var img = document.createElement('img')
-img.src = codeURL
-img.style.backgroundColor = "#2B3A42"
-img.style.padding = "20px"
-img.width = 32
-document.body.appendChild(img)
-
-console.log('hol2');
+init();
