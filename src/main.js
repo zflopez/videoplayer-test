@@ -1,13 +1,14 @@
 require('./styles/styles.scss');
 require('es6-promise').polyfill();
 
-var settings = require('./settings/init-settings.json');
-var url_config = require('./services/build-url.js');
-var appModule = require('./modules/app/appModule.js');
+(function () {
+    var settings = require('./settings/init-settings.json');
+    var appModule = require('./modules/app/appModule.js');
 
-var init = function () {
-    var app = new appModule(settings, url_config);
-    $('body').append(app.el);
-}
+    var init = function () {
+        var app = new appModule(settings);
+        $('body').prepend(app.el);
+    };
 
-init();
+    init();
+})();

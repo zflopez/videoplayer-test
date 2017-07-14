@@ -14,7 +14,6 @@ module.exports = Backbone.View.extend({
 		_.bindAll(this, 'render');
 		this.bindEvents();
 		this.render();
-		//this.listenTo(eventBus, 'movieInfo:infoLoaded', this.render);
 	},
 
 	render: function () {
@@ -31,28 +30,24 @@ module.exports = Backbone.View.extend({
 		this.listenTo(eventBus, 'languageSelector:change', this.refreshLanguage);
 	},
 
-	loadComponents: function() {
+	loadComponents: function () {
 		this.loadMovieInfo();
-		this.loadPlayButton();
 		this.loadLanguageSelector();
+		this.loadPlayButton();
 	},
 
 	/**
-	 * Creates movie info container component instance and appends it to appModule.
+	 * Creates movie info component instance and appends it to appModule.
 	 */
-	loadMovieInfo: function() {
-<<<<<<< HEAD
-		this.movieInfo = new movieInfoComponent(eventBus, this.options.settings.movie_info);
-=======
-		this.movieInfo = new movieInfoComponent(this.options.settings.movie_info, lang);
->>>>>>> feature-language-selector
+	loadMovieInfo: function (lang) {
+		this.movieInfo = new movieInfoComponent(eventBus, this.options.settings.movie_info, lang);
 		this.$el.append(this.movieInfo.el);
 	},
 
 	/**
 	 * Creates play button component instance and appends it to appModule.
 	 */
-	loadPlayButton: function() {
+	loadPlayButton: function () {
 		this.playButton = new playButtonComponent(eventBus);
 		this.$el.append(this.playButton.el);
 	},
@@ -62,21 +57,22 @@ module.exports = Backbone.View.extend({
 	 */
 	loadPlayer: function () {
 		this.player = new playerComponent(eventBus, this.options.settings.video_url);
-		console.log(this.player.el);
 		this.$el.append(this.player.el);
 	},
 
 	/**
 	 * Creates language selector component instance and appends ir to appModule.
 	 */
-	loadLanguageSelector: function() {
+	loadLanguageSelector: function () {
 		this.languageSelector = new languageSelectorComponent(eventBus);
 		this.$el.append(this.languageSelector.el);
 	},
 
-	refreshLanguage: function(languageData) {
+	/**
+	 * Changes document direction and movie info component depending on language selection.
+	 */
+	refreshLanguage: function (languageData) {
 		document.dir = languageData.direction;
-		this.movieInfo.remove();
-
+		this.movieInfo.reloadContent(languageData.code);
 	}
 });

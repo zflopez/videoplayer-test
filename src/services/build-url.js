@@ -1,11 +1,11 @@
-var api_key = '?api_key=20312c0f058ba8d2140a832db57baeea',
-    configuration_url = 'https://api.themoviedb.org/3/configuration',
-    movie_url = 'https://api.themoviedb.org/3/movie/',
-    language_query = '&language=';
+var apiKey = '?api_key=20312c0f058ba8d2140a832db57baeea',
+    configurationUrl = 'https://api.themoviedb.org/3/configuration',
+    movieUrl = 'https://api.themoviedb.org/3/movie/',
+    languageQuery = '&language=';
 
 module.exports = function (params) {
     if (params) {
-        return movie_url + params.id + api_key + language_query + params.lang;
+        return movieUrl + params.id + apiKey + languageQuery + params.lang;
     }
-    return configuration_url + api_key;
+    return configurationUrl + apiKey;
 };

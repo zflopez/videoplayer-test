@@ -1,8 +1,16 @@
 $bluegrey: #2B3A42;
 
+@import './../modules/components/player/playerStyle';
+
 #content {
   padding: 20px;
   background: $bluegrey;
   color: #dedede;
   text-shadow: 0 1px 1px rgba(#000, .5);
+}
+
+app {
+  #movieInfoContainer {
+    background-color: #c7f5f6;
+  }
 }

@@ -6,6 +6,8 @@ module.exports = Backbone.View.extend({
         'change #languageSelector': 'languageTrigger'
     },
 
+    tagName: 'section',
+
     id: 'languageSelectorContainer',
 
     initialize: function (options) {

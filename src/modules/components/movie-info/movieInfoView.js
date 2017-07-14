@@ -2,7 +2,8 @@
 var moment = require('moment'),
     duration = require('moment-duration-format'),
     rateChartComponent = require('./../rate-chart/rateChartComponent.js'),
-    template = require('./movieInfoTemplate.html');
+    template = require('./movieInfoTemplate.html'),
+    getMovieInfo = require('./../../../services/request-url.js');
 
 module.exports = Backbone.View.extend({
 
@@ -14,6 +15,7 @@ module.exports = Backbone.View.extend({
 
     initialize: function () {
         _.bindAll(this, 'render');
+        //this.getImages();
         // Waits for fetch request finished and model setting to save labels and render component.
         this.listenTo(this.model, 'change', this.setFetchLabels);
     },
@@ -25,6 +27,14 @@ module.exports = Backbone.View.extend({
     },
 
     /**
+     * Refresh component content with new selected language data.
+     */
+    reloadContent: function(lang) {
+        this.model.selectedLangLabels(lang);
+        this.model.getMovieInfo(lang);
+    },
+
+    /**
      * Sets labels for template from fetch request and renders component.
      */
     setFetchLabels: function () {
@@ -33,11 +43,19 @@ module.exports = Backbone.View.extend({
             imdbLink: imdbRoot + this.model.get('imdb_id'),
             release_year: moment(this.model.get('release_date')).year(),
             runtimeFormatted: moment.duration(this.model.get('runtime'), "minutes").format("h[h] m[m]"),
-            backdropImage: '',
-            posterImage: ''
+            //backdropImage: this.model.get('requestImages').base_url + this.model.get('requestImages').backdrop_sizes[2] + this.model.get('backdrop_path'),
+            //posterImage: this.model.get('requestImages').base_url + this.model.get('requestImages').poster_sizes[2] + this.model.get('poster_path')
         }, { silent: true });
 
         this.render();
+    },
+
+    getImages: function () {
+        var scope = this;
+        getMovieInfo(false, function (data) {
+            console.log(data);
+            scope.set('requestImages', data.images, { silent: true });
+        });
     },
 
     /**
@@ -49,15 +67,6 @@ module.exports = Backbone.View.extend({
             vote_count: this.model.get('vote_count')
         };
         this.rateChart = new rateChartComponent(voteData);
-        this.$el.append(this.rateChart.el);
-    },
-
-    /**
-     * Removes child views and component view itself when language selector changes.
-     */
-    remove: function () {
-        this.rateChart.remove();
-        //this.model.destroy();
-        Backbone.View.prototype.remove.apply(this, arguments);
+        this.$('#chartContainer').append(this.rateChart.el);
     }
 });

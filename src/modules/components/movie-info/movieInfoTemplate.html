@@ -1,9 +1,10 @@
 <script type="text/template" id="movieInfoTemplate" data-variable-name="info">
     <img src="<%= info.posterImage %>" alt="<%= info.title %>">
-    <h2><%= info.title %><span><i> (<%= info.release_year %>)</i></span></h2>
+    <h2><%= info.title %><span> (<i><%= info.release_year %></i>)</span></h2>
     <% if(info.title !== info.original_title ){ %>
         <h3><i><%= info.original_title %></i></h3>
     <% } %>
+    <div id="chartContainer"></div>
     <p><%= info.langLabels.runtime %> <%= info.runtimeFormatted %></p>
     <p><a href="<%= info.imdbLink %>"><%= info.langLabels.imdb %></a></p>
     <% if(info.overview){ %>
