@@ -17,22 +17,19 @@ module.exports = Backbone.Model.extend({
                     genres: 'Genres',
                     imdb: 'IMDb',
                     runtime: 'Runtime',
-                    overview: 'Synopsis',
-                    rate: 'User Score'
+                    overview: 'Synopsis'
                 },
                 es: {
                     genres: 'Géneros',
                     imdb: 'IMDb',
                     runtime: 'Duración',
-                    overview: 'Sinopsis',
-                    rate: 'Votaciones'
+                    overview: 'Sinopsis'
                 },
                 ar: {
                     genres: 'الأنواع',
                     imdb: 'IMDb',
                     runtime: 'وقت التشغيل',
-                    overview: 'ملخص',
-                    rate: 'النتيجة المستخدم'
+                    overview: 'ملخص'
                 }
             }
         }, { silent: true });

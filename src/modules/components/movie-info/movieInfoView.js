@@ -22,7 +22,7 @@ module.exports = Backbone.View.extend({
 
     render: function () {
         this.$el.html(template.movieInfoTemplate(this.model.toJSON()));
-        //this.loadRateChart();
+        this.loadRateChart();
         return this;
     },
 
@@ -62,6 +62,7 @@ module.exports = Backbone.View.extend({
      * Creates rate chart component instance and appends it to movieInfo.
      */
     loadRateChart: function () {
+        
         var voteData = {
             vote_average: this.model.get('vote_average'),
             vote_count: this.model.get('vote_count')
