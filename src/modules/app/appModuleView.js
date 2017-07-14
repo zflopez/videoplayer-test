@@ -14,7 +14,6 @@ module.exports = Backbone.View.extend({
 	initialize: function (options) {
 		this.options = options || {};
 		_.bindAll(this, 'render');
-		console.log('holi qué tal appmodule', this.options);
 		this.bindEvents();
 		this.render();
 		//this.listenTo(eventBus, 'movieInfo:infoLoaded', this.render);
@@ -34,14 +33,17 @@ module.exports = Backbone.View.extend({
 	},
 
 	loadComponents: function() {
-		//this.loadMovieInfo();
+		this.loadMovieInfo();
 		this.loadPlayButton();
 		//this.loadLanguageSelector();
 	},
 
+	/**
+	 * Creates movie info container component instance and appends it to appModule.
+	 */
 	loadMovieInfo: function() {
-		this.movieInfo = new movieInfoComponent(this.options.settings.movie_info);
-		this.$el.append(this.movieInfo);
+		this.movieInfo = new movieInfoComponent(eventBus, this.options.settings.movie_info);
+		this.$el.append(this.movieInfo.el);
 	},
 
 	/**

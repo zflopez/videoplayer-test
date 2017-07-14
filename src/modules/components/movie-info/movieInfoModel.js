@@ -2,7 +2,6 @@ var getMovieInfo = require('./../../../services/request-url.js');
 
 module.exports = Backbone.Model.extend({
     initialize: function () {
-        console.log('movieInfoModel');
         this.setLabels();
         this.selectedLangLabels();
         this.getMovieInfo();
@@ -51,7 +50,10 @@ module.exports = Backbone.Model.extend({
      * Returns JSON from fetch request and sets it to the model.
      */
     getMovieInfo: function () {
-        this.set(getMovieInfo(this.get('movie_info').movie_id, this.get('lang')));
+        var scope = this;
+        
+        getMovieInfo({ id: this.get('movie_info').movie_id, lang: this.get('lang') }, function (data) {
+            scope.set(data);
+        });
     }
-
 });

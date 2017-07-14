@@ -3,9 +3,9 @@ var api_key = '?api_key=20312c0f058ba8d2140a832db57baeea',
     movie_url = 'https://api.themoviedb.org/3/movie/',
     language_query = '&language=';
 
-module.exports = function () {
-    if (arguments.length > 0) {
-        return movie_url + arguments[0] + api_key + language_query + arguments[1];
+module.exports = function (params) {
+    if (params) {
+        return movie_url + params.id + api_key + language_query + params.lang;
     }
     return configuration_url + api_key;
 };

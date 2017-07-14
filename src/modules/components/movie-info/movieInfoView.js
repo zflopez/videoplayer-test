@@ -16,12 +16,11 @@ module.exports = Backbone.View.extend({
         _.bindAll(this, 'render');
         // Waits for fetch request finished and model setting to save labels and render component.
         this.listenTo(this.model, 'change', this.setFetchLabels);
-        //this.render();
     },
 
     render: function () {
         this.$el.html(template.movieInfoTemplate(this.model.toJSON()));
-        this.loadRateChart();
+        //this.loadRateChart();
         return this;
     },
 
@@ -32,8 +31,9 @@ module.exports = Backbone.View.extend({
         var imdbRoot = this.model.get('movie_info').imdb_url;
         this.model.set({
             imdbLink: imdbRoot + this.model.get('imdb_id'),
-            year: moment(this.model.get('release_date')).year(),
+            release_year: moment(this.model.get('release_date')).year(),
             runtimeFormatted: moment.duration(this.model.get('runtime'), "minutes").format("h[h] m[m]"),
+            backdropImage: '',
             posterImage: ''
         }, { silent: true });
 
