@@ -1,0 +1,17 @@
+#playerContainer {
+  position: relative;
+  z-index: 20;
+
+  #videoPlayer {
+    width: 100%;
+  }
+  
+  #videoSubs {
+    .cueDirUniWrapper {
+      direction: 'rtl';
+      color: whitesmoke;
+      font-family: 'Source Sans Pro', sans-serif;
+      background-color: black;
+    }
+  }
+}

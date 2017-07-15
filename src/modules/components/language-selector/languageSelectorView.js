@@ -21,6 +21,9 @@ module.exports = Backbone.View.extend({
         return this;
     },
 
+    /**
+     * Triggers new selected language props.
+     */
     languageTrigger: function () {
         var languageSelectedValue = this.$('#languageSelector').val(),
             languageSelectedProps = _.findWhere(this.model.get('languages'), { code: languageSelectedValue });

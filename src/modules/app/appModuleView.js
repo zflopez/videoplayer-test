@@ -1,9 +1,9 @@
 require('backbone.radio');
-var eventBus = Backbone.Radio.channel('appModuleChannel');
-var languageSelectorComponent = require('./../components/language-selector/languageSelectorComponent.js');
-var movieInfoComponent = require('./../components/movie-info/movieInfoComponent.js');
-var playButtonComponent = require('./../components/play-button/playButtonComponent.js');
-var playerComponent = require('./../components/player/playerComponent.js');
+var eventBus = Backbone.Radio.channel('appModuleChannel'),
+	languageSelectorComponent = require('./../components/language-selector/languageSelectorComponent.js'),
+	movieInfoComponent = require('./../components/movie-info/movieInfoComponent.js'),
+	playerComponent = require('./../components/player/playerComponent.js'),
+	template = require('./appModuleTemplate.html');
 
 module.exports = Backbone.View.extend({
 
@@ -17,7 +17,7 @@ module.exports = Backbone.View.extend({
 	},
 
 	render: function () {
-		this.$el.html(this);
+		this.$el.html(template.appTemplate(this));
 		this.loadComponents();
 		return this;
 	},
@@ -26,6 +26,7 @@ module.exports = Backbone.View.extend({
 	 * Binds events to appModule.
 	 */
 	bindEvents: function () {
+		//this.listenTo('movieInfoLoaded', this.render);
 		this.listenTo(eventBus, 'playVideo', this.loadPlayer);
 		this.listenTo(eventBus, 'languageSelector:change', this.refreshLanguage);
 	},
@@ -34,9 +35,8 @@ module.exports = Backbone.View.extend({
 	 * Calls every component creation method.
 	 */
 	loadComponents: function () {
-		this.loadMovieInfo();
 		this.loadLanguageSelector();
-		this.loadPlayButton();
+		this.loadMovieInfo();
 	},
 
 	/**
@@ -48,19 +48,12 @@ module.exports = Backbone.View.extend({
 	},
 
 	/**
-	 * Creates play button component instance and appends it to appModule.
-	 */
-	loadPlayButton: function () {
-		this.playButton = new playButtonComponent(eventBus);
-		this.$el.append(this.playButton.el);
-	},
-
-	/**
 	 * Creates player component instance and appends it to appModule.
 	 */
 	loadPlayer: function () {
 		this.player = new playerComponent(eventBus, this.options.settings.video_url);
 		this.$el.append(this.player.el);
+		this.animatedScroll(this.$('#videoPlayer'));
 	},
 
 	/**
@@ -68,7 +61,16 @@ module.exports = Backbone.View.extend({
 	 */
 	loadLanguageSelector: function () {
 		this.languageSelector = new languageSelectorComponent(eventBus);
-		this.$el.append(this.languageSelector.el);
+		this.$('.navbar-container').append(this.languageSelector.el);
+	},
+
+	/**
+	 * Scrolls top to a selector.
+	 */
+	animatedScroll: function (selector) {
+		$('body').animate({
+			scrollTop: selector.offset().top - $('body').offset().top
+		}, 2000);
 	},
 
 	/**

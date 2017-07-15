@@ -1,3 +1,4 @@
+require('jquery');
 require('easy-pie-chart');
 var template = require('./rateChartTemplate.html');
 

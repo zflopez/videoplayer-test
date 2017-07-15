@@ -28,7 +28,6 @@ module.exports = Backbone.View.extend({
      */
     playTrigger: function () {
         this.options.eventBus.trigger('playVideo');
-        // temporary solution to prevent from creating more player instances.
         this.$el.remove();
     }
 });

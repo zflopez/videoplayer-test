@@ -7,7 +7,7 @@ module.exports = Backbone.Model.extend({
     },
 
     /**
-     * Set labels.
+     * Set language labels.
      */
     setLabels: function () {
         this.set({
@@ -16,19 +16,22 @@ module.exports = Backbone.Model.extend({
                     genres: 'Genres',
                     imdb: 'IMDb',
                     runtime: 'Runtime',
-                    overview: 'Synopsis'
+                    overview: 'Synopsis',
+                    productionCountries: 'Country'
                 },
                 es: {
                     genres: 'Géneros',
                     imdb: 'IMDb',
                     runtime: 'Duración',
-                    overview: 'Sinopsis'
+                    overview: 'Sinopsis',
+                    productionCountries: 'País'
                 },
                 ar: {
                     genres: 'الأنواع',
                     imdb: 'IMDb',
                     runtime: 'وقت التشغيل',
-                    overview: 'ملخص'
+                    overview: 'ملخص',
+                    productionCountries: 'بلد'
                 }
             }
         }, { silent: true });
@@ -44,7 +47,7 @@ module.exports = Backbone.Model.extend({
     },
 
     /**
-     * Returns JSON from fetch request and sets it to the model.
+     * Returns movie info JSON from fetch request and sets it to the model.
      */
     getMovieInfo: function (newLang) {
         var scope = this,

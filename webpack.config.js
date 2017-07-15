@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
@@ -17,6 +18,13 @@ module.exports = {
 				'style-loader',
 				'css-loader',
 				'sass-loader'
+			]
+		},
+		{
+			test: /\.css$/,
+			use: [
+				'style-loader',
+				'css-loader'
 			]
 		},
 		{

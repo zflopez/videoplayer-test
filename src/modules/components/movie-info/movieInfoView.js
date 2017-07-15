@@ -1,6 +1,7 @@
 var moment = require('moment'),
     duration = require('moment-duration-format'),
     rateChartComponent = require('./../rate-chart/rateChartComponent.js'),
+    playButtonComponent = require('./../play-button/playButtonComponent.js');
     template = require('./movieInfoTemplate.html'),
     movieInfoImagesModel = require('./movieInfoImagesModel.js');
 
@@ -19,7 +20,8 @@ module.exports = Backbone.View.extend({
 
     render: function () {
         this.$el.html(template.movieInfoTemplate(this.model.toJSON()));
-        //this.loadRateChart();
+        this.setBackdropImage();
+        this.loadComponents();
         return this;
     },
 
@@ -61,6 +63,29 @@ module.exports = Backbone.View.extend({
         }, { silent: true });
         this.render();
     },
+
+    /**
+     * Sets backdrop image CSS property when image url is fetched to model.
+     */
+    setBackdropImage: function() {
+        this.$el.css('background', 'url("'+ this.model.get('backdropImage') + '") no-repeat fixed center');
+    },
+
+    /**
+	 * Calls every component creation method.
+	 */
+    loadComponents: function() {
+        this.loadPlayButton();
+        //this.loadRateChart();
+    },
+
+    /**
+	 * Creates play button component instance and appends it to appModule.
+	 */
+	loadPlayButton: function () {
+		this.playButton = new playButtonComponent(this.options.eventBus);
+		this.$el.append(this.playButton.el);
+	},
 
     /**
      * Creates rate chart component instance and appends it to movieInfo.

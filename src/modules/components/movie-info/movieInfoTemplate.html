@@ -1,16 +1,45 @@
 <script type="text/template" id="movieInfoTemplate" data-variable-name="info">
-    <img src="<%= info.posterImage %>" alt="<%= info.title %>">
-    <h2><%= info.title %><span> (<i><%= info.release_year %></i>)</span></h2>
-    <% if(info.title !== info.original_title ){ %>
-        <h3><i><%= info.original_title %></i></h3>
-    <% } %>
-    <% if(info.runtime){ %>
-        <p><%= info.langLabels.runtime %> <%= info.runtimeFormatted %></p>
-    <% } %>
-    <p><a href="<%= info.imdbLink %>"><%= info.langLabels.imdb %></a></p>
-    <div id="chartContainer"></div>
-    <% if(info.overview){ %>
-        <h4><%= info.langLabels.overview %></h4>
-        <p><%= info.overview %></p>
-    <% } %>
+    <div class="content">
+        <img src="<%= info.posterImage %>" alt="<%= info.title %>" class="img-rounded">
+        <h2><%= info.title %>
+            <span dir=auto><i> (<%= info.release_year %>)</i></span>
+        </h2>
+        
+        <% if(info.title !== info.original_title ){ %>
+            <h3><i><%= info.original_title %></i></h3>
+        <% } %>
+
+        <% if(info.genres){ %>
+            <p>
+                <span class="label"><%= info.langLabels.genres %></span>
+                <% _.each(info.genres, function(genre){ %>
+                    <span class="label genre"><%= genre.name %></span>
+                <% }); %>
+            </p>
+        <% } %>
+        
+        <% if(info.production_countries){ %>
+            <p>
+                <span class="label"><%= info.langLabels.productionCountries %></span>
+                <% _.each(info.production_countries, function(country){ %>
+                    <span class="label country"><%= country.name %></span>
+                <% }); %>
+            </p>
+        <% } %>
+
+        <% if(info.runtime){ %>
+            <p>
+                <span class="label"><%= info.langLabels.runtime %></span>
+                <span class="label"><%= info.runtimeFormatted %></span>
+            </p>    
+        <% } %>
+
+        <p><a href="<%= info.imdbLink %>"><%= info.langLabels.imdb %></a></p>
+        <div id="chartContainer"></div>
+
+        <% if(info.overview){ %>
+            <h4><%= info.langLabels.overview %></h4>
+            <p><%= info.overview %></p>
+        <% } %>
+    </div>   
 </script>

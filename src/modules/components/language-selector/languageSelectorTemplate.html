@@ -1,7 +1,7 @@
-<script type="text/template" id="languageSelectorTemplate" data-variable-name="selector">
-    <select id="languageSelector" name="languageSelector">
+<script type="text/template" id="languageSelectorTemplate" data-variable-name="selector">  
+    <select id="languageSelector" name="languageSelector" class="selectpicker">
         <% _.each(selector.languages, function(language){%>
-            <<option value="<%= language.code %>"><%= language.name %></option>>
+            <option value="<%= language.code %>"><%= language.name %></option>
         <% }); %>
     </select>
 </script>
