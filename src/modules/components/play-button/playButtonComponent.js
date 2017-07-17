@@ -1,5 +1,5 @@
-var playButtonView = require('./playButtonView.js');
-var playButtonModel = require('./playButtonModel.js');
+var playButtonView = require('./playButtonView.js'),
+    playButtonModel = require('./playButtonModel.js');
 
 module.exports = function (eventBus) {
     return new playButtonView({

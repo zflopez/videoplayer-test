@@ -37,7 +37,17 @@ module.exports = {
 		{
 			test: /\.html$/,
 			use: 'webpack-compile-templates'
-		}]
+		},
+		{
+          test: require.resolve('jquery'),
+          use: [{
+              loader: 'expose-loader',
+              options: 'jQuery'
+          },{
+              loader: 'expose-loader',
+              options: '$'
+          }]
+      	}]
 	},
 	plugins: [
 		new UglifyJSPlugin({

@@ -5,7 +5,7 @@ module.exports = Backbone.Model.extend({
                 userScore: 'User Score',
                 votes: 'votes'
             },
-            percent: this.model.get('vote_average') * 10
+            percent: this.get('vote_average') * 10
         });
     }
 });

@@ -1,45 +1,10 @@
 @import './../modules/app/_app.scss';
 @import './../modules/components/player/_player.scss';
+@import './../modules/components/movie-info/_movie-info.scss';
+@import './../modules/components/rate-chart/_rate-chart.scss';
 
 body {
   margin: 0 auto;
   background-color: black;
   color: white;
-
-  .label {
-    font-weight: 400;
-    background-color: yellowgreen;
-  }
-  .genre {
-    background-color: #4e008e;
-  }
-  .country {
-    background-color: #ce0056;
-  }
-}
-
-app {
-  #movieInfoContainer {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    position: relative;
-    z-index: 1;
-     
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
-      opacity: .6;
-      z-index: -1;
-    }
-    
-    .content {
-      z-index: 1;
-    }
-  }
 }

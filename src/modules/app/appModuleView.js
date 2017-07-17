@@ -26,7 +26,6 @@ module.exports = Backbone.View.extend({
 	 * Binds events to appModule.
 	 */
 	bindEvents: function () {
-		//this.listenTo('movieInfoLoaded', this.render);
 		this.listenTo(eventBus, 'playVideo', this.loadPlayer);
 		this.listenTo(eventBus, 'languageSelector:change', this.refreshLanguage);
 	},

@@ -1,9 +1,11 @@
 <script type="text/template" id="chartTemplate" data-variable-name="chart">
-    <div class="outer-ring">
+    <li class="outer-ring">
         <div class="chart" data-percent="<%= chart.percent %>">
             <p><%= chart.percent %>%</p>
-            <div class="percent"></div>
         </div>
-    </div>
-    <span><%= chart.vote_count %> <%= chart.labels.votes %></span>
+    </li>
+    <li class="text">
+        <span class="userScore"><%= chart.labels.userScore %></span>
+        <p><%= chart.vote_count %> <%= chart.labels.votes %></p>
+    </li>
 </script>

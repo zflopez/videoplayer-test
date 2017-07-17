@@ -1,7 +1,6 @@
 var url = require('./build-url.js');
 
 module.exports = function (params, callback) {
-
     return fetch(url(params))
         .then(function (response) {
             return response.json();

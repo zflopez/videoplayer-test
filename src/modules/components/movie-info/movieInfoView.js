@@ -1,7 +1,7 @@
 var moment = require('moment'),
     duration = require('moment-duration-format'),
     rateChartComponent = require('./../rate-chart/rateChartComponent.js'),
-    playButtonComponent = require('./../play-button/playButtonComponent.js');
+    playButtonComponent = require('./../play-button/playButtonComponent.js'),
     template = require('./movieInfoTemplate.html'),
     movieInfoImagesModel = require('./movieInfoImagesModel.js');
 
@@ -59,7 +59,7 @@ module.exports = Backbone.View.extend({
             release_year: moment(this.model.get('release_date')).year(),
             runtimeFormatted: moment.duration(this.model.get('runtime'), "minutes").format("h[h] m[m]"),
             backdropImage: this.movieInfoImagesModel.get('requestImages').base_url + this.movieInfoImagesModel.get('requestImages').backdrop_sizes[2] + this.model.get('backdrop_path'),
-            posterImage: this.movieInfoImagesModel.get('requestImages').base_url + this.movieInfoImagesModel.get('requestImages').poster_sizes[2] + this.model.get('poster_path')
+            posterImage: this.movieInfoImagesModel.get('requestImages').base_url + this.movieInfoImagesModel.get('requestImages').poster_sizes[3] + this.model.get('poster_path')
         }, { silent: true });
         this.render();
     },
@@ -67,25 +67,25 @@ module.exports = Backbone.View.extend({
     /**
      * Sets backdrop image CSS property when image url is fetched to model.
      */
-    setBackdropImage: function() {
-        this.$el.css('background', 'url("'+ this.model.get('backdropImage') + '") no-repeat fixed center');
+    setBackdropImage: function () {
+        this.$el.css('background', 'url("' + this.model.get('backdropImage') + '") no-repeat fixed center');
     },
 
     /**
 	 * Calls every component creation method.
 	 */
-    loadComponents: function() {
+    loadComponents: function () {
         this.loadPlayButton();
-        //this.loadRateChart();
+        this.loadRateChart();
     },
 
     /**
 	 * Creates play button component instance and appends it to appModule.
 	 */
-	loadPlayButton: function () {
-		this.playButton = new playButtonComponent(this.options.eventBus);
-		this.$el.append(this.playButton.el);
-	},
+    loadPlayButton: function () {
+        this.playButton = new playButtonComponent(this.options.eventBus);
+        this.$('#playButtonContainer').append(this.playButton.el);
+    },
 
     /**
      * Creates rate chart component instance and appends it to movieInfo.

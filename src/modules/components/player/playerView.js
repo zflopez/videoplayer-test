@@ -1,6 +1,5 @@
-require('underscore');
-var dashjs = require('dashjs');
-var template = require('./playerTemplate.html');
+var dashjs = require('dashjs'),
+	template = require('./playerTemplate.html');
 
 module.exports = Backbone.View.extend({
 
@@ -35,7 +34,7 @@ module.exports = Backbone.View.extend({
 	 * Load DashJS player.
 	 */
 	loadDashPlayer: function (video_url) {
- 		this.player = dashjs.MediaPlayer().create();
+		this.player = dashjs.MediaPlayer().create();
 		this.player.initialize(this.$('#videoPlayer')[0], video_url, true);
 		this.player.attachTTMLRenderingDiv(this.$('#videoSubs')[0]);
 	}

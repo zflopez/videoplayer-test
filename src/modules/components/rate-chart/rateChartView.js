@@ -1,10 +1,11 @@
-require('jquery');
-require('easy-pie-chart');
-var template = require('./rateChartTemplate.html');
+var EasyPieChart = require('easy-pie-chart'),
+    template = require('./rateChartTemplate.html');
 
 module.exports = Backbone.View.extend({
 
     id: 'rateChart',
+
+    tagName: 'ul',
 
     initialize: function () {
         _.bindAll(this, 'render');
@@ -13,12 +14,16 @@ module.exports = Backbone.View.extend({
 
     render: function () {
         this.$el.html(template.chartTemplate(this.model.toJSON()));
-        //this.loadChart();
+        this.loadChart();
         return this;
     },
 
+    /**
+     * Creates a EasyPieChart instance with attributes.
+     */
     loadChart: function () {
-        this.$('.chart').easyPieChart({
+        var element = this.$('.chart')[0];
+        new EasyPieChart(element, {
             barColor: "#21d07a",
             trackColor: "#204529",
             scaleColor: false,

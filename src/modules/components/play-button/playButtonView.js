@@ -10,6 +10,12 @@ module.exports = Backbone.View.extend({
 
     className: 'btn btn-default',
 
+    attributes: function() {
+        return {
+            'style': 'margin-bottom: 1em;'
+        }
+    },
+
     template: _.template('<span class="glyphicon glyphicon-play" aria-hidden="true"></span> <%= label %>'),
 
     initialize: function (options) {

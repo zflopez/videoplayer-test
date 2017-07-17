@@ -1,7 +1,10 @@
-var languageSelectorView = require('./languageSelectorView.js') ;
-var languageSelectorModel = require('./languageSelectorModel.js');
+require('bootstrap-select/js/bootstrap-select');
+require('bootstrap-select/dist/css/bootstrap-select.css');
 
-module.exports = function(eventBus) {
+var languageSelectorView = require('./languageSelectorView.js'),
+    languageSelectorModel = require('./languageSelectorModel.js');
+
+module.exports = function (eventBus) {
     return new languageSelectorView({
         model: new languageSelectorModel(),
         eventBus: eventBus
