@@ -2,8 +2,8 @@
   list-style: none;
   display: inline-flex;
   align-items: center;
-  padding-left: 0;
-  
+  padding: 1em 0 1em 0;
+
   .outer-ring {
     width: 70px;
     height: 70px;
@@ -31,9 +31,12 @@
     margin-left: 1em;
     margin-top: 1em;
     
+    [dir=rtl] & {
+        margin-right: 1em;
+    }
+
     .userScore {
       font-weight: 700;
     }
   }
 }
-

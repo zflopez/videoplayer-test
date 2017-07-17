@@ -60,6 +60,8 @@ module.exports = {
 		}),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
+			jquery: 'jquery',
+			jQuery: 'jquery',
 			_: 'underscore',
 			Backbone: 'backbone',
 			dash: 'dashjs'

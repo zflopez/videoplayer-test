@@ -35,8 +35,14 @@
         .country {
             background-color: #ce0056;
         }
-        .overview {
+        .imdbLink {
             margin-top: 1em;
+        }
+        .overview {
+            margin-top: 3em;
+        }
+        #playButtonContainer {
+            display: grid;
         }
     }
 }
