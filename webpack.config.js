@@ -17,6 +17,7 @@ module.exports = {
 			use: [
 				'style-loader',
 				'css-loader',
+				'postcss-loader',
 				'sass-loader'
 			]
 		},
@@ -24,8 +25,21 @@ module.exports = {
 			test: /\.css$/,
 			use: [
 				'style-loader',
-				'css-loader'
+				'css-loader',
+				'postcss-loader'
 			]
+		},
+		{
+			test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+			loader: 'imports-loader?jQuery=jquery'
+		},
+		{
+			test: /\.(woff2?|svg)$/,
+			loader: 'url-loader?limit=10000'
+		},
+		{
+			test: /\.(ttf|eot)$/,
+			loader: 'file-loader'
 		},
 		{
 			test: /\.(png|jpg)$/,
@@ -39,15 +53,15 @@ module.exports = {
 			use: 'webpack-compile-templates'
 		},
 		{
-          test: require.resolve('jquery'),
-          use: [{
-              loader: 'expose-loader',
-              options: 'jQuery'
-          },{
-              loader: 'expose-loader',
-              options: '$'
-          }]
-      	}]
+			test: require.resolve('jquery'),
+			use: [{
+				loader: 'expose-loader',
+				options: 'jQuery'
+			}, {
+				loader: 'expose-loader',
+				options: '$'
+			}]
+		}]
 	},
 	plugins: [
 		new UglifyJSPlugin({
